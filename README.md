@@ -30,7 +30,7 @@
    php artisan migrate
    ```
    LUB
-    - użyj załączonej już bazy database.sqlite
+    - użyj załączonej już bazy database.sqlite (dodana na potrzeby szybszej konfiguracji)
 
 6. **Uruchom aplikację**
    ```bash
