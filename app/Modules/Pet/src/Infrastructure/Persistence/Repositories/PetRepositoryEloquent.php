@@ -9,6 +9,7 @@ use App\Modules\Pet\src\Domain\Data\ValueObjects\PetId;
 use App\Modules\Pet\src\Domain\Data\ValueObjects\PetPhotoUrl;
 use App\Modules\Pet\src\Domain\Repositories\PetRepository;
 use App\Modules\Pet\src\Infrastructure\Persistence\Models\PetEloquent;
+use Illuminate\Support\Collection;
 
 final readonly class PetRepositoryEloquent implements PetRepository
 {
@@ -69,13 +70,18 @@ final readonly class PetRepositoryEloquent implements PetRepository
 
     public function findByStatus(PetStatusCollection $statuses): PetCollection
     {
+        /**
+         * @var Collection<int, PetEloquent> $pets
+         */
         $pets = $this->model->query()
             ->with(['category', 'tags'])
             ->whereIn('status', $statuses->toArrayOfValues())
-            ->get()
-            ->transform(
-                fn (PetEloquent $model) => Pet::fromArray($model->toArray())
-            );
+            ->get();
+
+
+        $pets = $pets->map(
+            fn (PetEloquent $model) => Pet::fromArray($model->toArray())
+        );
 
         return PetCollection::create($pets);
     }

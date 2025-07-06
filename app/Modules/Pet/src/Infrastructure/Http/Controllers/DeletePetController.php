@@ -22,7 +22,7 @@ readonly class DeletePetController
                 return PetApiResponse::notFound();
             }
 
-            return PetApiResponse::success($id);
+            return PetApiResponse::success((string) $id);
         } catch (Exception $e) {
             return PetApiResponse::error($e->getMessage());
         }

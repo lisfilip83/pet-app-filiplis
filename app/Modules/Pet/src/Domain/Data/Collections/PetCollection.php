@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 class PetCollection extends Collection
 {
     /**
-     * @param Collection<int, Pet> $pets
+     * @param Collection<int, mixed> $pets
      * @return self
      */
     public static function create(Collection $pets): self
@@ -19,6 +19,5 @@ class PetCollection extends Collection
     public function toArray(): array
     {
         return $this->map(fn (Pet $pet) => $pet->toArray())->all();
-
     }
 }
