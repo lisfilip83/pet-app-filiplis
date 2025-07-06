@@ -60,7 +60,7 @@
 
 ### Dostęp do aplikacji:
 
-- **Aplikacja**: http://localhost
+- **Aplikacja**: http://localhost/pets
 
 ---
 
