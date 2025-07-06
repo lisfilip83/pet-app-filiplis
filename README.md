@@ -4,7 +4,7 @@
 
 1. **Sklonuj repozytorium**
    ```bash
-   git clone [URL_REPOZYTORIUM]
+   git clone https://github.com/lisfilip83/pet-app-filiplis.git/
    cd pet-app
    ```
 
